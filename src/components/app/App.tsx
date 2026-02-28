@@ -25,6 +25,7 @@ export default function App() {
       bad: 0,
     });
   };
+  
   const totalVotes = votes.good + votes.neutral + votes.bad;
 
   return (
