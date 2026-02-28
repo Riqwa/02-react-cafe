@@ -25,7 +25,7 @@ export default function App() {
       bad: 0,
     });
   };
-  
+
   const totalVotes = votes.good + votes.neutral + votes.bad;
 
   return (
@@ -37,6 +37,8 @@ export default function App() {
         canReset={totalVotes > 0}
       />
       {}
+      
+
       
       {totalVotes === 0 ? <Notification /> : <VoteStats
         vote={votes}
