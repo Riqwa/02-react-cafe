@@ -1,8 +1,8 @@
 import css from "./App.module.css";
-import Cafeinfo from "../CafeInfo/CafeInfo";
+import CafeInfo from "../CafeInfo/CafeInfo";
 import { useState } from "react";
 import type { Votes, VoteType } from "../../types/votes";
-import VoteOpions from "../VoteOptions/VoteOptions";
+import VoteOptions from "../VoteOptions/VoteOptions";
 import VoteStats from "../VoteStats/VoteStats";
 import Notification from "../Notification/Notification";
 
@@ -30,24 +30,21 @@ export default function App() {
 
   return (
     <div className={css.app}>
-      <Cafeinfo />
-      <VoteOpions
+      <CafeInfo />
+      <VoteOptions
         onVote={handleVote}
         onReset={resetVotes}
         canReset={totalVotes > 0}
       />
-      {}
-      
 
-      
       {totalVotes === 0 ? <Notification /> : <VoteStats
-        vote={votes}
+        votes={votes}
         totalVotes={totalVotes}
         positiveRate={
           totalVotes > 0
             ? Math.round(
-                (votes.good / totalVotes) * 100,
-              )
+                ((votes.good + votes.neutral) / totalVotes) * 100,
+              ) 
             : 0
         }
       />}
